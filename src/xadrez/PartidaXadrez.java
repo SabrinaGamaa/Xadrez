@@ -1,6 +1,9 @@
 package src.xadrez;
 
+import src.jogotabuleiro.Posicao;
 import src.jogotabuleiro.Tabuleiro;
+import src.xadrez.pecas.Rei;
+import src.xadrez.pecas.Torre;
 
 // CORAÇÃO DO NOSSO XADREZ - REGRAS
 public class PartidaXadrez {
@@ -11,6 +14,7 @@ public class PartidaXadrez {
     public PartidaXadrez() {
         // Quem tem que saber a dimensão de um tabuleiro é a classe PartidaXadrez
         tabuleiro = new Tabuleiro(8,8);
+        IniciarJogo();
     }
 
     // Tem que retorna uma matriz de peças de xadrez, correspondente a PartidaXadrez
@@ -24,5 +28,9 @@ public class PartidaXadrez {
         return mat;
     }
 
+    private void IniciarJogo() {
+        tabuleiro.colocarPeca(new Posicao(2, 1), new Torre(tabuleiro, Cor.PRETO));
+        tabuleiro.colocarPeca(new Posicao(6, 2), new Rei(tabuleiro, Cor.PRETO));
+    }
 
 }

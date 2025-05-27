@@ -30,6 +30,7 @@ public class Programa {
         // Testar movimento da peça
         PartidaXadrez partidaXadrez = new PartidaXadrez();
         while (true) {
+            System.out.println();
             try {
                 UI.limparTela();
                 UI.printTabuleiro(partidaXadrez.getPecas());

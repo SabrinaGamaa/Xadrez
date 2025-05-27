@@ -3,7 +3,7 @@ package src.xadrez;
 import src.jogotabuleiro.Peca;
 import src.jogotabuleiro.Tabuleiro;
 
-public class PecaXadrez extends Peca {
+public abstract class PecaXadrez extends Peca {
 
     // Atributo que guarda a cor da peça (ex: branca ou preta)
     private Cor cor;

@@ -1,7 +1,9 @@
 package src.xadrez;
 
+import src.jogotabuleiro.Peca;
 import src.jogotabuleiro.Posicao;
 import src.jogotabuleiro.Tabuleiro;
+import src.xadrez.exception.ExcecaoXadrez;
 import src.xadrez.pecas.Peao;
 import src.xadrez.pecas.Rei;
 import src.xadrez.pecas.Torre;
@@ -48,6 +50,27 @@ public class PartidaXadrez {
         colocarNovaPeca('e', 8, new Torre(tabuleiro, Cor.PRETO));
         colocarNovaPeca('d', 8, new Rei(tabuleiro, Cor.PRETO));
 
+    }
+
+    public PecaXadrez RealizarMovimentoXadrez(PosicaoXadrez posicaoOrigem, PosicaoXadrez posicaoDestino){
+        Posicao origem = posicaoOrigem.toPosicao();
+        Posicao destino = posicaoDestino.toPosicao();
+        validarOrigemPeca(origem);
+        Peca capturarPeca = fazerMovimento(origem, destino);
+        return (PecaXadrez)capturarPeca;
+    }
+
+    public void validarOrigemPeca(Posicao posicao) {
+        if (!tabuleiro.existeUmaPeca(posicao)) {
+            throw new ExcecaoXadrez("Não existe peça na posição de Origem.");
+        }
+    }
+
+    public Peca fazerMovimento(Posicao origem, Posicao destino) {
+        Peca p = tabuleiro.removerPeca(origem);
+        Peca pecaCapturada = tabuleiro.removerPeca(destino);
+        tabuleiro.colocarPeca(destino, p);
+        return pecaCapturada;
     }
 
 }

@@ -1,6 +1,7 @@
 package src.xadrez;
 
 import src.jogotabuleiro.Peca;
+import src.jogotabuleiro.Posicao;
 import src.jogotabuleiro.Tabuleiro;
 
 public abstract class PecaXadrez extends Peca {
@@ -17,6 +18,12 @@ public abstract class PecaXadrez extends Peca {
 
     public Cor getCor() {
         return cor;
+    }
+
+    // Faremos aqui nessa PeçaXadrez para utilizar ela em todas as classes
+    protected boolean existePecaOponente(Posicao posicao){
+        PecaXadrez p = (PecaXadrez) getTabuleiro().peca(posicao);
+        return p != null && p.getCor() != cor;
     }
 
 
